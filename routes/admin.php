@@ -4,14 +4,15 @@ use App\Http\Controllers\Admin\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 
-//use App\Http\Controllers\Admin\RoleController;
-//use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CommonSettingController;
 use App\Http\Controllers\Admin\UploadImageController;
 
-Route::namespace('Admin')->name('admin.')->group(function () {
+Route::name('admin.')->group(function () {
     // Login & logout for admin
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
     Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -28,10 +29,10 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
     Route::group(['middleware' => ['auth:admin']], function () {
         // Role
-        //Route::resource('roles', RoleController::class);
+        Route::resource('roles', RoleController::class);
 
         // Permission
-        //Route::resource('permissions', PermissionController::class);
+        Route::resource('permissions', PermissionController::class);
 
         // Dashboard
         Route::group(['middleware' => ['permission:manage dashboard']], function () {
