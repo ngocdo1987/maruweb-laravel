@@ -7,7 +7,7 @@ Maruweb Laravel starter kit source code
 - Git clone
 - composer install
 - npm install && npm run dev
-- Copy .env.example to .env and change configurations
+- Copy .env.example to .env and change configurations (Register Recaptcha & SMTP email provider like SendGrid, SendInBlue ...)
 - php artisan migrate
 - php artisan maruweb:setup-admins
 - php artisan maruweb:setup-roles-and-permissions

@@ -8,6 +8,7 @@ use App\Services\ActivityLogService;
 class UserObserver
 {
     protected $activityLogService;
+    protected $prefix = 'USE';
 
     public function __construct(ActivityLogService $activityLogService)
     {
@@ -22,7 +23,7 @@ class UserObserver
      */
     public function created(User $user)
     {
-        $this->activityLogService->storeActivityLog($user, 'USE', 'Add');
+        $this->activityLogService->storeActivityLog($user, $this->prefix, 'Add');
     }
 
     /**
@@ -33,7 +34,7 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        $this->activityLogService->storeActivityLog($user, 'USE', 'Update');
+        $this->activityLogService->storeActivityLog($user, $this->prefix, 'Update');
     }
 
     /**
@@ -44,7 +45,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        $this->activityLogService->storeActivityLog($user, 'USE', 'Delete');
+        $this->activityLogService->storeActivityLog($user, $this->prefix, 'Delete');
     }
 
     /**

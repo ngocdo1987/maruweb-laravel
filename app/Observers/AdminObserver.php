@@ -8,6 +8,7 @@ use App\Services\ActivityLogService;
 class AdminObserver
 {
     protected $activityLogService;
+    protected $prefix = 'KAN';
 
     public function __construct(ActivityLogService $activityLogService)
     {
@@ -22,7 +23,7 @@ class AdminObserver
      */
     public function created(Admin $admin)
     {
-        $this->activityLogService->storeActivityLog($admin, 'KAN', 'Add');
+        $this->activityLogService->storeActivityLog($admin, $this->prefix, 'Add');
     }
 
     /**
@@ -33,7 +34,7 @@ class AdminObserver
      */
     public function updated(Admin $admin)
     {
-        $this->activityLogService->storeActivityLog($admin, 'KAN', 'Update');
+        $this->activityLogService->storeActivityLog($admin, $this->prefix, 'Update');
     }
 
     /**
@@ -44,7 +45,7 @@ class AdminObserver
      */
     public function deleted(Admin $admin)
     {
-        $this->activityLogService->storeActivityLog($admin, 'KAN', 'Delete');
+        $this->activityLogService->storeActivityLog($admin, $this->prefix, 'Delete');
     }
 
     /**
