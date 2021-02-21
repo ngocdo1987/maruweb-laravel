@@ -1,0 +1,15 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class DummyTableSeeder extends Seeder
+{
+    /**
+     *
+     */
+    public function run()
+    {   
+        factory(App\Models\Dummy::class, 50)->create();
+    }
+}

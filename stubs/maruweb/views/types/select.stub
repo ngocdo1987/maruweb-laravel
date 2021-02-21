@@ -1,0 +1,18 @@
+<div class="form-group">
+    <label for="" class="col-sm-3 control-label">{{ __('Dummy') }} <font color="red">※</font></label>
+    <div class="col-sm-9">
+        <select name="dummy" id="dummy" class="form-control">
+            <option value="">--</option>
+            @foreach ($dummyConfig as $dummy)
+                @php
+                    $selected = $dummy == old('dummy') ? ' selected' : ''
+                @endphp
+                <option value="{{ $dummy }}"{{ $selected }}>{{ __(ucfirst($dummy)) }}</option>
+            @endforeach
+        </select>
+
+        @error('dummy')
+            <font color="red">{{ $message }}</font>
+        @enderror
+    </div>
+</div>

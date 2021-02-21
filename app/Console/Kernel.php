@@ -15,6 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\SetupAdmins',
         'App\Console\Commands\SetupRolesAndPermissions',
+        'App\Console\Commands\GenerateCode',
+        'App\Console\Commands\RemoveCode',
     ];
 
     /**

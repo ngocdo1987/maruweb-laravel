@@ -1,0 +1,56 @@
+<?php
+namespace App\Services;
+
+use App\Models\Dummy;
+use Illuminate\Support\Facades\DB;
+
+class DummyService extends AbstractEloquentService
+{
+    public function __construct(Dummy $model)
+    {
+        $this->model = $model;
+    }
+
+    public function searchAdvanced($request, $paginate = 0)
+    {
+        $data = $request->all();
+
+        $dummies = Dummy::select('id', 'created_at', 'updated_at')
+            ->where(function ($query) use ($data) {
+                
+            });
+        
+        if ($paginate == 1) {
+            return $dummies->latest()->paginate(config('constants.dummy.per_page'));
+        } else {
+            return $dummies->get();
+        }
+    }
+
+    // Store new dummy
+    public function storeDummy($request)
+    {
+        $data = $request->all();
+
+        $dummy = Dummy::create($data);
+
+        return $dummy->id;
+    }
+
+    // Update existing dummy
+    public function updateDummy($request)
+    {
+        $data = $request->all();
+
+        $dummy = Dummy::findOrFail($data['id']);
+        $dummy->update($data);
+
+        return $dummy->id;
+    }
+
+    // Destroy dummy
+    public function destroyDummy($id)
+    {
+        Dummy::destroy($id);
+    }
+}

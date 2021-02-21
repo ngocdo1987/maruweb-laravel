@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Exports;
+
+use App\Services\DummyService;
+//use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
+
+class DummiesExport implements FromView
+{
+    protected $request;
+    protected $service;
+
+    public function __construct($request, $service)
+    {
+        $this->request = $request;
+        $this->service = $service;
+    }
+
+    public function view(): View
+    {
+        $dummies = $this->service->searchAdvanced($this->request);
+
+        return view('admin.dummies.export_csv', compact('dummies'));
+    }
+}

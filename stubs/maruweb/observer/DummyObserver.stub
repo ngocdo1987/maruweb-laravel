@@ -1,0 +1,86 @@
+<?php
+
+namespace App\Observers;
+
+use App\Models\Dummy;
+use App\Models\ActivityLog;
+
+class DummyObserver
+{
+    /**
+     * Handle the user "created" event.
+     *
+     * @param  \App\Dummy  $dummy
+     * @return void
+     */
+    public function created(Dummy $dummy)
+    {
+        if (auth()->guard('admin')->check() && isset(auth()->guard('admin')->user()->id) && isset($dummy->id)) {
+            ActivityLog::create([
+                'admin_id' => auth()->guard('admin')->user()->id,
+                'menu' => array_search('DUM', config('constants.activity_log.menu')),
+                'action_type' => array_search('Add', config('constants.activity_log.action_type')),
+                'ref_id' => $dummy->id
+            ]);
+        }
+    }
+
+    /**
+     * Handle the user "updated" event.
+     *
+     * @param  \App\Dummy  $dummy
+     * @return void
+     */
+    public function updated(Dummy $dummy)
+    {
+        if (auth()->guard('admin')->check() && isset(auth()->guard('admin')->user()->id) && isset($dummy->id)) {
+            ActivityLog::create([
+                'admin_id' => auth()->guard('admin')->user()->id,
+                'menu' => array_search('DUM', config('constants.activity_log.menu')),
+                'action_type' => array_search('Update', config('constants.activity_log.action_type')),
+                'ref_id' => $dummy->id
+            ]);
+        }
+    }
+
+    /**
+     * Handle the user "deleted" event.
+     *
+     * @param  \App\Dummy  $dummy
+     * @return void
+     */
+    public function deleted(Dummy $dummy)
+    {
+        if (auth()->guard('admin')->check() && isset(auth()->guard('admin')->user()->id) && isset($dummy->id)) {
+            ActivityLog::create([
+                'admin_id' => auth()->guard('admin')->user()->id,
+                'menu' => array_search('DUM', config('constants.activity_log.menu')),
+                'action_type' => array_search('Delete', config('constants.activity_log.action_type')),
+                'ref_id' => $dummy->id
+            ]);
+        }
+        
+    }
+
+    /**
+     * Handle the user "restored" event.
+     *
+     * @param  \App\Dummy  $dummy
+     * @return void
+     */
+    public function restored(Dummy $dummy)
+    {
+        //
+    }
+
+    /**
+     * Handle the user "force deleted" event.
+     *
+     * @param  \App\Dummy  $dummy
+     * @return void
+     */
+    public function forceDeleted(Dummy $dummy)
+    {
+        //
+    }
+}
