@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Maruweb;
 
 use Illuminate\Console\Command;
 use App\Models\Admin;
@@ -39,18 +39,15 @@ class SetupAdmins extends Command
      */
     public function handle()
     {
-        $admins = [
-            'Maruweb dev' => 'dev@maruweb.vn',
-            'Maruweb admin' => 'admin@maruweb.vn',
-            'Maruweb content admin' => 'contentadmin@maruweb.vn',
-            'Maruweb user admin' => 'useradmin@maruweb.vn'
-        ];
+        $this->info('THIS IS LARAVEL SETUP ADMINS TOOL!');
+
+        $admins = config('constants.setup.admins');
 
         foreach ($admins as $k => $v) {
             Admin::create([
                 'name' => $k,
                 'email' => $v,
-                'password' => bcrypt('Qwe123!@#'),
+                'password' => bcrypt(config('constants.setup.password')),
                 'remember_token' => Str::random(10)
             ]);
         }

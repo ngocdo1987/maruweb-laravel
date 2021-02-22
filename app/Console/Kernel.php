@@ -13,10 +13,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\SetupAdmins',
-        'App\Console\Commands\SetupRolesAndPermissions',
-        'App\Console\Commands\GenerateCode',
-        'App\Console\Commands\RemoveCode',
+        // Maruweb
+        'App\Console\Commands\Maruweb\SetupAdmins',
+        'App\Console\Commands\Maruweb\SetupRolesAndPermissions',
+        'App\Console\Commands\Maruweb\GenerateCode',
+        'App\Console\Commands\Maruweb\RemoveCode',
     ];
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Maruweb;
 
 use Illuminate\Console\Command;
 
@@ -38,9 +38,10 @@ class GenerateCode extends Command
     public function handle()
     {
         $this->info('THIS IS LARAVEL GENERATE CODE TOOL!');
+        $this->info('This tool helps you generate model, controller, service, request, config, observer, factory, seeder, view files quickly!');
 
-        $singular = $this->ask('Enter singular: ');
-        $plural = $this->ask('Enter plural: ');
+        $singular = $this->ask('Enter singular');
+        $plural = $this->ask('Enter plural');
 
         $findArr = ['Dummies', 'Dummy', 'dummies', 'dummy'];
         $replaceArr = [
@@ -117,6 +118,10 @@ class GenerateCode extends Command
         file_put_contents("resources/views/admin/".$plural."/create.blade.php", $create);
         file_put_contents("resources/views/admin/".$plural."/edit.blade.php", $edit);
         echo "Generate views successfully!\n";
+
+        // 10/ Export
+
+        // 11/ Import
 
         // echo "Successfully!";
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Maruweb;
 
 use Illuminate\Console\Command;
 
@@ -37,10 +37,11 @@ class RemoveCode extends Command
      */
     public function handle()
     {
-        $this->info('THIS IS REMOVE CODE TOOL!');
+        $this->info('THIS IS LARAVEL REMOVE CODE TOOL!');
+        $this->info('This tool helps you remove model, controller, service, request, config, observer, factory, seeder, view files quickly!');
 
-        $singular = $this->ask('Enter singular: ');
-        $plural = $this->ask('Enter plural: ');
+        $singular = $this->ask('Enter singular');
+        $plural = $this->ask('Enter plural');
 
         // 1/ model
         if (file_exists("app/Models/".ucfirst($singular).".php")) {
