@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Imports;
+
+use App\Models\Dummy;
+
+use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithStartRow;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+
+class DummiesImport implements ToCollection, WithStartRow, WithValidation, WithCustomCsvSettings, WithBatchInserts, WithChunkReading
+{
+    public function collection(Collection $rows)
+    {
+        foreach ($rows as $row) {
+            
+        }
+    }
+
+    // WithValidation
+    public function rules(): array
+    {
+        return [
+
+        ];
+    }
+
+    public function customValidationMessages()
+    {
+        return [
+
+        ];
+    }
+
+    // WithCustomCsvSettings
+    public function getCsvSettings(): array
+    {
+        return [
+
+        ];
+    }
+
+    // WithBatchInserts
+    public function batchSize(): int
+    {
+        return 1000;
+    }
+
+    // WithChunkReading
+    public function chunkSize(): int
+    {
+        return 1000;
+    }
+
+    public function startRow(): int
+    {
+        return 2;
+    }
+}

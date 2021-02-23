@@ -120,6 +120,13 @@ class GenerateCode extends Command
         echo "Generate views successfully!\n";
 
         // 10/ Export
+        $export = file_get_contents("stubs/maruweb/export/DummiesExport.stub");
+        $export = str_replace($findArr, $replaceArr, $export);
+        file_put_contents("app/Exports/".ucfirst($plural)."Export.php", $export);
+        $exportCsv = file_get_contents("stubs/maruweb/views/export_csv.blade.stub");
+        $exportCsv = str_replace($findArr, $replaceArr, $exportCsv);
+        file_put_contents("resources/views/admin/".$plural."/export_csv.blade.php", $exportCsv);
+        echo "Generate export successfully!\n";
 
         // 11/ Import
 

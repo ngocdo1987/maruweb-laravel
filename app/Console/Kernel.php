@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\Maruweb\SetupAdmins',
         'App\Console\Commands\Maruweb\SetupRolesAndPermissions',
         'App\Console\Commands\Maruweb\GenerateCode',
+        'App\Console\Commands\Maruweb\GenerateViewsAndValidations',
         'App\Console\Commands\Maruweb\RemoveCode',
     ];
 

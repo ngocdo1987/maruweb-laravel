@@ -10,6 +10,13 @@ use App\Http\Requests\Dummy\UpdateDummyRequest;
 use App\Services\DummyService;
 use App\Models\Dummy;
 
+// Export
+use App\Exports\DummiesExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+// Import
+use App\Imports\DummiesImport;
+
 class DummyController extends Controller
 {
     protected $service;
@@ -126,5 +133,10 @@ class DummyController extends Controller
 
         $url = route('admin.dummies.index').'?page='.request()->page;
         return redirect($url)->with('success', __('Deleted successfully'));
+    }
+
+    public function exportCsv(Request $request)
+    {
+        return Excel::download(new DummiesExport($request, $this->service), 'dummies_'.date('Y_m_d_H_i_s').'.csv');
     }
 }
