@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Services\UploadImageService;
 use App\Http\Requests\UploadImage\StoreImageRequest;
 
+use Illuminate\Support\Facades\Log;
 class UploadImageController extends Controller
 {
     protected $service;

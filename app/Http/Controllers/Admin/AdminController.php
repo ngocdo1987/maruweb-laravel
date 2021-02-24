@@ -11,6 +11,8 @@ use App\Services\AdminService;
 use App\Models\Admin;
 use App\Services\ActivityLogService;
 
+use Illuminate\Support\Facades\Log;
+
 class AdminController extends Controller
 {
     protected $service;

@@ -10,6 +10,7 @@ use App\Http\Requests\CommonSetting\UpdateCommonSettingRequest;
 use App\Services\CommonSettingService;
 use App\Models\CommonSetting;
 
+use Illuminate\Support\Facades\Log;
 class CommonSettingController extends Controller
 {
     protected $service;

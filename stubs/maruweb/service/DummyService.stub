@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Models\Dummy;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DummyService extends AbstractEloquentService
 {

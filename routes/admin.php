@@ -12,7 +12,10 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CommonSettingController;
 use App\Http\Controllers\Admin\UploadImageController;
 
+use Illuminate\Support\Facades\Route;
+
 Route::name('admin.')->group(function () {
+    // *** START ADMIN AUTH ROUTES *** =====================================================
     // Login & logout for admin
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
     Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -25,7 +28,7 @@ Route::name('admin.')->group(function () {
     Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
     Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
     Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-    
+    // *** END ADMIN AUTH ROUTES *** =====================================================
 
     Route::group(['middleware' => ['auth:admin']], function () {
         // Role

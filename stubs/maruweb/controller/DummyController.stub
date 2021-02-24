@@ -17,6 +17,8 @@ use Maatwebsite\Excel\Facades\Excel;
 // Import
 use App\Imports\DummiesImport;
 
+use Illuminate\Support\Facades\Log;
+
 class DummyController extends Controller
 {
     protected $service;
