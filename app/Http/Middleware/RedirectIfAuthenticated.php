@@ -19,12 +19,23 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        /*
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
+        }
+
+        return $next($request);
+        */
+        
+        $adminDir = config('auth.admin_dir');
+        $guard = $request->is($adminDir) || $request->is($adminDir.'/*') ? 'admin' : 'web';
+
+        if (Auth::guard($guard)->check()) {
+            return $guard == 'admin' ? redirect(RouteServiceProvider::ADMIN_HOME) : redirect(RouteServiceProvider::HOME);
         }
 
         return $next($request);

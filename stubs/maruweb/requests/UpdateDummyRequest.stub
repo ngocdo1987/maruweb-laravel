@@ -17,11 +17,49 @@ class UpdateDummyRequest extends FormRequest
     }
 
     /**
+    * Prepare the data for validation. https://laravel.com/docs/8.x/validation#preparing-input-for-validation
+    *
+    * @return void
+    */
+    /*
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            
+        ]);
+    }
+    */
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
     public function rules()
+    {
+        return [
+
+        ];
+    }
+
+    /**
+    * Get the error messages for the defined validation rules.
+    *
+    * @return array
+    */
+    public function messages()
+    {
+        return [
+
+        ];
+    }
+
+    /**
+    * Get custom attributes for validator errors. https://laravel.com/docs/8.x/validation#customizing-the-validation-attributes
+    *
+    * @return array
+    */
+    public function attributes()
     {
         return [
 
