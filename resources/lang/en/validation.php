@@ -119,6 +119,13 @@ return [
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
+    'katakana_full_width' => 'Please only enter Katakana full-width.',
+    'number_and_hyphen' => 'Please only enter numbers and hyphen.',
+    'complex_password' => 'Please combine with 4 types of numbers, lowercase letters, uppercase letters, and symbols (. -_!)',
+    'captcha' => 'Please finish captcha',
+    'postal_code' => 'Please enter valid postal code (xxx-xxxx)',
+    'slug' => 'Please enter unique URL key',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
