@@ -1,6 +1,6 @@
-## Maruweb Laravel starter kit
+## Maruweb Laravel 8 starter kit
 
-Maruweb Laravel starter kit source code
+Maruweb Laravel 8 starter kit source code
 
 ## How to setup
 
@@ -8,6 +8,7 @@ Maruweb Laravel starter kit source code
 - composer install
 - npm install && npm run dev
 - Copy .env.example to .env and change configurations (Register Recaptcha & SMTP email provider like SendGrid, SendInBlue ...)
+- php artisan key:generate
 - php artisan migrate
 - php artisan maruweb:setup-admins
 - php artisan maruweb:setup-roles-and-permissions
